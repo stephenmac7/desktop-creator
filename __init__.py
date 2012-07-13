@@ -1,2 +1,2 @@
-import desktopfile
-desktopfile.getDataFromCLI()
+from gui import main
+main()

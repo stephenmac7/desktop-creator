@@ -24,6 +24,8 @@ class mainApp(QWidget):
     file.close()
     # Connect things
     self.mainWidget.createButton.clicked.connect(self.createClicked)
+    # Stop from resizing window
+    self.setFixedSize(self.mainWidget.size())
     # Extra stuff to do to the window
     self.center()
     self.show()

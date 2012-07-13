@@ -69,7 +69,6 @@ def getDataFromCLI():
 Please choose a type of desktop file below:
 1. Application (A shortcut to an application)
 2. Link (A shortcut to a web link.)
-3. Directory (A container of meta data of a menu entry)
   """)
   desktopType = int(input("Your option: "))
   userhome = "/home/" + getuser()

@@ -1,6 +1,7 @@
 # Imports
 import sys
-import desktopfile
+import desktopFile
+from getpass import getuser
 from PySide.QtGui import *
 from PySide.QtCore import *
 from PySide.QtUiTools import QUiLoader
@@ -19,16 +20,31 @@ class mainApp(QWidget):
     loader = QUiLoader()
     file = QFile("main_gui.ui")
     file.open(QFile.ReadOnly)
-    self.myWidget = loader.load(file, self)
+    self.mainWidget = loader.load(file, self)
     file.close()
     # Connect things
-    self.myWidget.createButton.clicked.connect(self.createClicked)
+    self.mainWidget.createButton.clicked.connect(self.createClicked)
     # Extra stuff to do to the window
     self.center()
     self.show()
 
   def createClicked(self):
-    print(self.myWidget.nameEdit.text())
+    userhome = "/home/" + getuser()
+    version = mainWidget.versionEdit.text()
+    name = mainWidget.nameEdit.text()
+    comment = mainWidget.commentEdit.text()
+    icon = mainWidget.iconEdit.text().replace("~", userhome)
+    terminal = mainWidget.terminalBox.checked()
+    if mainWidget.appRadio.toggled():
+      categories = [x.text() for x in self.mainWidget.findChildren(QCheckBox) if x.isChecked()]
+      generic = mainWidget.genericEdit.text()
+      toExec = mainWidget.execEdit.text()
+      toWrite = desktopFile.applicationDesktop(version, name, generic, comment, toExec,
+                                               icon, terminal, categories)
+    else:
+      linkTo = mainWidget.protocolCombo.currentText() + urlEdit.text().replace("~", userhome)
+      toWrite = desktopFile.linkDesktop(version, name, comment, linkTo, icon)
+    desktopFile.createDesktop(toWrite, mainWidget.filenameEdit.text())
     QCoreApplication.quit()
 
   def center(self):

@@ -2,10 +2,13 @@
 import os
 from getpass import getuser
 
+# Global Constants
+userhome = "/home/" + getuser()
+
 # The Important Functions
 def createDesktop(inputList, fname):
   """Create Desktop file and write to it."""
-  openFile = open(fname, 'w')
+  openFile = open(fname.replace("~", userhome), 'w')
   newlines = (line + "\n" for line in inputList)
   openFile.writelines(newlines)
   openFile.close()
@@ -71,7 +74,6 @@ Please choose a type of desktop file below:
 2. Link (A shortcut to a web link.)
   """)
   desktopType = int(input("Your option: "))
-  userhome = "/home/" + getuser()
   if desktopType == 1:
     # Get the categories for the desktop file (application type):
     # Set the variable for the while loop and create an empty list.
@@ -101,7 +103,6 @@ Please choose a type of desktop file below:
     print("Your option was invalid.")
     exit()
   filename = input("Filename: ")
-  filename = filename.replace("~", userhome)
   createDesktop(desktopFile, filename)
 
 

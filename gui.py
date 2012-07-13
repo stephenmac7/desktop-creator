@@ -30,21 +30,27 @@ class mainApp(QWidget):
 
   def createClicked(self):
     userhome = "/home/" + getuser()
-    version = mainWidget.versionEdit.text()
-    name = mainWidget.nameEdit.text()
-    comment = mainWidget.commentEdit.text()
-    icon = mainWidget.iconEdit.text().replace("~", userhome)
-    terminal = mainWidget.terminalBox.checked()
-    if mainWidget.appRadio.toggled():
+    version = self.mainWidget.versionEdit.text()
+    name = self.mainWidget.nameEdit.text()
+    comment = self.mainWidget.commentEdit.text()
+    icon = self.mainWidget.iconEdit.text().replace("~", userhome)
+    terminal = self.mainWidget.terminalBox.isChecked()
+    if self.mainWidget.appRadio.isChecked():
       categories = [x.text() for x in self.mainWidget.findChildren(QCheckBox) if x.isChecked()]
-      generic = mainWidget.genericEdit.text()
-      toExec = mainWidget.execEdit.text()
+      if self.mainWidget.otherEdit1.text() != "":
+        categories += [self.mainWidget.otherEdit1.text()]
+      if self.mainWidget.otherEdit2.text() != "":
+        categories += [self.mainWidget.otherEdit2.text()]
+      if self.mainWidget.otherEdit3.text() != "":
+        categories += [self.mainWidget.otherEdit3.text()]
+      generic = self.mainWidget.genericEdit.text()
+      toExec = self.mainWidget.execEdit.text()
       toWrite = desktopFile.applicationDesktop(version, name, generic, comment, toExec,
                                                icon, terminal, categories)
     else:
-      linkTo = mainWidget.protocolCombo.currentText() + urlEdit.text().replace("~", userhome)
+      linkTo = self.mainWidget.protocolCombo.currentText() + self.mainWidget.urlEdit.text().replace("~", userhome)
       toWrite = desktopFile.linkDesktop(version, name, comment, linkTo, icon)
-    desktopFile.createDesktop(toWrite, mainWidget.filenameEdit.text())
+    desktopFile.createDesktop(toWrite, self.mainWidget.filenameEdit.text())
     QCoreApplication.quit()
 
   def center(self):

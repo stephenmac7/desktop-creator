@@ -12,7 +12,7 @@ def createDesktop(inputList, fname):
   newlines = (line + "\n" for line in inputList)
   openFile.writelines(newlines)
   openFile.close()
-  os.chmod(fname, 0o755)
+  os.chmod(fname.replace("~", userhome), 0o755)
 
 
 def applicationDesktop(version, name, generic, comment, execute,

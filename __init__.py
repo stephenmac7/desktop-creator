@@ -1,0 +1,2 @@
+import desktopfile
+desktopfile.getDataFromCLI()

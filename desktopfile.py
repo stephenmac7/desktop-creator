@@ -2,7 +2,7 @@
 import os
 from getpass import getuser
 
-# Functions
+# The Important Functions
 def createDesktop(inputList, fname):
   """Create Desktop file and write to it."""
   openFile = open(fname, 'w')
@@ -50,7 +50,7 @@ def linkDesktop(version, name, comment, url, icon):
   endFile += ["Icon=" + icon]
   return endFile
 
-
+# Only for non-GUI run!
 def getYN(prompt):
   userInput = input(prompt)
   if userInput.lower() == "y" or userInput.lower() == "yes":

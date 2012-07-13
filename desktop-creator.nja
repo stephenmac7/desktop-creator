@@ -1,0 +1,24 @@
+{
+  "mainFile": "", 
+  "venv": "", 
+  "name": "desktop-creator", 
+  "license": "GNU General Public License v3", 
+  "url": "", 
+  "pythonPath": "python3", 
+  "preExecScript": "", 
+  "programParams": "", 
+  "supported-extensions": [
+    ".py", 
+    ".html", 
+    ".jpg", 
+    ".png", 
+    ".ui", 
+    ".css", 
+    ".json", 
+    ".js", 
+    ".ini"
+  ], 
+  "project-type": "", 
+  "postExecScript": "", 
+  "description": "Creates desktop files"
+}

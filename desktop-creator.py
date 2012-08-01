@@ -25,8 +25,8 @@ class mainApp(QWidget):
     loader = QUiLoader()
     if QFile.exists("desktop_creator.ui"):
       file = QFile("desktop_creator.ui")
-    elif QFile.exists("/usr/share/desktop_creator/desktop_creator.ui"):
-      file = QFile("/usr/share/desktop_creator/desktop_creator.ui")
+    elif QFile.exists("/usr/share/desktop-creator/desktop-creator.ui"):
+      file = QFile("/usr/share/desktop-creator/desktop-creator.ui")
     else:
       print("The UI file cannot be found. Please check your installation.")
       sys.exit(256)

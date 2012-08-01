@@ -26,10 +26,8 @@ class mainApp(QWidget):
     elif QFile.exists("/usr/share/desktop_creator/desktop_creator.ui"):
       file = QFile("/usr/share/desktop_creator/desktop_creator.ui")
     else:
-      try:
-        file = QFile(input("The UI File Cannot be found, please enter the path or check your installation."))
-      except:
-        print("Could not open the UI File.")
+      print("The UI file cannot be found. Please check your installation.")
+      sys.exit(256)
     file.open(QFile.ReadOnly)
     self.mainWidget = loader.load(file, self)
     file.close()

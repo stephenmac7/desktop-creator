@@ -8,4 +8,4 @@ To run without installing download the files then install Python 3 and PySide. A
 
 ## Installing
 
-Download the files and run install.py
+Download the files, install PySide and Python 3, then run install.sh

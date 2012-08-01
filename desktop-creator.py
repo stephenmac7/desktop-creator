@@ -1,3 +1,5 @@
+#!/usr/share/env python3
+
 # Imports
 import os
 import sys

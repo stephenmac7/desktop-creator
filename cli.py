@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # Imports
 import os
 from getpass import getuser

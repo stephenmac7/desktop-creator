@@ -7,6 +7,14 @@ from getpass import getuser
 # Global Constants
 userhome = "/home/" + getuser()
 
+# Input with Keyboard Interrupt
+def kInput(pText):
+  try:
+    return input(pText)
+  except KeyboardInterrupt:
+    print("\nExiting")
+    exit()
+
 # The Important Functions
 def createDesktop(inputList, fname):
   """Create Desktop file and write to it."""
@@ -57,7 +65,7 @@ def linkDesktop(version, name, comment, url, icon):
 
 # Only for non-GUI run!
 def getYN(prompt):
-  userInput = input(prompt)
+  userInput = kInput(prompt)
   if userInput.lower() == "y" or userInput.lower() == "yes":
     return True
   elif userInput.lower() == "n" or userInput.lower() == "no":
@@ -75,7 +83,7 @@ Please choose a type of desktop file below:
 1. Application (A shortcut to an application)
 2. Link (A shortcut to a web link.)
   """)
-  desktopType = int(input("Your option: "))
+  desktopType = int(kInput("Your option: "))
   if desktopType == 1:
     # Get the categories for the desktop file (application type):
     # Set the variable for the while loop and create an empty list.
@@ -86,25 +94,25 @@ Please choose a type of desktop file below:
           "When you have finished leave and empty line.")
     # Execute the while loop to add to the categories
     while catInput != "":
-      catInput = input("Category: ")
+      catInput = kInput("Category: ")
       categories += [catInput]
     terminal = getYN("Open terminal on execute (y/n): ")
-    desktopFile = applicationDesktop(input("Desktop File Version: "),
-                                     input("Name: "),
-                                     input("Generic Name: "),
-                                     input("Comment/Description: "),
-                                     input("File to execute: "),
-                                     input("Icon: "), terminal, categories)
+    desktopFile = applicationDesktop(kInput("Desktop File Version: "),
+                                     kInput("Name: "),
+                                     kInput("Generic Name: "),
+                                     kInput("Comment/Description: "),
+                                     kInput("File to execute: "),
+                                     kInput("Icon: "), terminal, categories)
   elif desktopType == 2:
-    desktopFile = linkDesktop(input("Desktop File Version: "),
-                                     input("Name: "),
-                                     input("Comment/Description: "),
-                                     input("URL (Use protocol://): ").replace("~", userhome),
-                                     input("Icon: ").replace("~", userhome))
+    desktopFile = linkDesktop(kInput("Desktop File Version: "),
+                                     kInput("Name: "),
+                                     kInput("Comment/Description: "),
+                                     kInput("URL (Use protocol://): ").replace("~", userhome),
+                                     kInput("Icon: ").replace("~", userhome))
   else:
     print("Your option was invalid.")
     exit()
-  filename = input("Filename: ")
+  filename = kInput("Filename: ")
   createDesktop(desktopFile, filename)
 
 

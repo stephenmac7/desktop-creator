@@ -18,7 +18,7 @@ class mainApp(QWidget):
     self.setWindowTitle("Desktop File Creator")
     # Load UI
     loader = QUiLoader()
-    file = QFile("main_gui.ui")
+    file = QFile("desktop_creator.ui")
     file.open(QFile.ReadOnly)
     self.mainWidget = loader.load(file, self)
     file.close()

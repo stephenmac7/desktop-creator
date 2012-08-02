@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Desktop Creator
+GenericName=Creation Wizard
+Comment=Creates desktop files
+Exec=/usr/bin/desktop-creator
+Icon=text-plain
+Terminal=false
+Categories=Settings;System;Utility;Development;
